@@ -1,0 +1,9 @@
+package kosta.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+//json 컨트롤러는 RestController 사용
+@RestController
+public class JsonController {
+
+}

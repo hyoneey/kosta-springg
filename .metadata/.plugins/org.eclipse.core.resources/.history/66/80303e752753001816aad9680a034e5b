@@ -1,0 +1,13 @@
+package kosta.aspect;
+
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+
+@Aspect
+public class SessionAspect { //어노테이션 방식 사용
+	
+	//공통관심사항 메소드 생성
+	//컨트롤러 내용에 따라 변경
+	@Around()
+
+}

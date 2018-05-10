@@ -1,0 +1,61 @@
+package kosta.model;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class BoardDao {
+	//autowired의 생성자, 세타메소드,필드에 사용가능
+	private JdbcTemplate jdbcTemplate;
+
+	@Autowired
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void insert(Board board){
+		String sql = "insert into board" +
+					 "(seq, title, writer, contents, regdate, hitcount)" +
+					 "values(board_seq.nextval, ?, ?, ?, sysdate, 0)";
+		
+		Object values[] = {
+					board.getTitle(),
+					board.getWriter(),
+					board.getContents()
+		};
+		
+		jdbcTemplate.update(sql,values);
+	}
+	
+	public List<Board> listBoard(){
+		String sql = "select * from board order by seq desc";
+		
+		RowMapper<Board> mapper = new RowMapper<Board>() {
+
+			@Override
+			public Board mapRow(ResultSet rs, int arg1) throws SQLException {
+				Board board = new Board();
+				
+				board.setContents(rs.getString("contents"));
+				board.setHitcount(rs.getInt("hitcount"));
+				board.setRegdate(rs.getString("regdate"));
+				board.setSeq(rs.getInt("seq"));
+				board.setTitle(rs.getString("title"));
+				board.setWriter(rs.getString("writer"));
+				
+				return board;
+			}
+		};
+		
+		List<Board> list = jdbcTemplate.query(sql, mapper);
+		
+		return list;
+	}
+
+}

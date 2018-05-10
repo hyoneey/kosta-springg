@@ -1,0 +1,28 @@
+package org.zerock.persistence;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+import org.zerook.domain.MemberVO;
+
+@Repository
+public class MemberDAOImpl implements MemberDAO {
+
+		@Inject
+		private SqlSession sqlSession;
+		
+		private static final String namespce = "org.zerock.mapper.MemberMapper";
+
+		@Override
+		default String getTime() {
+			return sqlSession.selectOne(namespce)+".getTime";
+		}
+
+		@Override
+		default void insertMember(MemberVO vo) {
+			sqlSession.insert(namespce+".insertMember",vo);
+		}
+		
+		
+}

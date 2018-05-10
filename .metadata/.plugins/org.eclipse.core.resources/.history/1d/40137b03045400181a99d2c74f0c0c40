@@ -1,0 +1,23 @@
+package org.zerock.persistence;
+
+import org.apache.ibatis.session.SqlSession;
+import org.zerook.domain.MemberVO;
+
+public class MemberDAOImpl implements MemberDAO {
+	
+	private SqlSession SqlSession;
+	
+	private static final String namespace = "org.zerook.mapper.MemberMapper";
+
+	@Override
+	public String getTime() {
+		return SqlSession.selectOne(namespace+".getTime");
+	}
+
+	@Override
+	public void insertMember(MemberVO vo) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

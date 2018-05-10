@@ -1,0 +1,12 @@
+package org.zerock.controller;
+
+import javax.inject.Inject;
+
+import org.zerock.service.BoardService;
+
+public class BoardController {
+	
+	@Inject
+	private BoardService service;
+
+}
