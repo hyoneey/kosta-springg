@@ -2,6 +2,8 @@ package org.zerock.test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -9,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.persistence.BoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,7 +20,7 @@ public class BoardDAOTest {
 
 	@Inject
 	private BoardDAO dao;
-	
+	/*	
 	@Test
 	public void testCreate() throws Exception{
 		BoardVO board = new BoardVO();
@@ -25,6 +28,27 @@ public class BoardDAOTest {
 		board.setContent("새글내용");
 		board.setWriter("user00");
 		dao.create(board);
+	}*/
+	
+	@Test
+	public void testListPage() throws Exception{
+		int page=3;
+		
+		List<BoardVO> list = dao.listPage(page);
+		
+		for(BoardVO boardVO : list){
+			System.out.println(boardVO.getBno() + ":" +boardVO.getTitle());
+		}
+	}
+	
+	@Test
+	public void testListCriteria() throws Exception{
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+		
+		List<BoardVO> list = dao.listCriteria(cri);
+		
 	}
 
 }
