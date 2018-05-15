@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.14/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	
+	<div id="displayDiv">
+	
+	</div>
+	
+	<script>
+		var source = "<h1><p> {{name}} </p> <p> {{userid}} </p> <p> {{addr}} </p> </h1>"; //적용될 html코드
+		var template = Handlebars.compile(source); //미리 컴파일 처리 , 템플릿에서 대체되어야하는 내용은 '{{}}' 문법이용
+		var data = {name:"홍길동", userid :"user" , addr : "서울" }; //실제 데이터
+		
+		$("#displayDiv").html(template(data)); //div id=displayDiv에 적용
+	</script>
+	
+</body>
+</html>

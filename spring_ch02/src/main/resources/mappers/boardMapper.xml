@@ -110,6 +110,31 @@
 	<!-- 	<include refid="search"></include> -->
 	</select>
 	
+	
+	<select id="listSearch" resultType="BoardVO">
+		<![CDATA[
+			select *
+			from tbl_board
+			where bno > 0
+		]]>
+		
+		<include refid="search"></include>
+		
+		<![CDATA[
+			order by bno desc
+		]]>
+	</select>
+	
+	<select id="listSearchCount" resultType="int">
+		<![CDATA[
+			select count(bno)
+			from tbl_board
+			where bno > 0
+		]]>
+		<include refid="search"></include>
+	</select>
+	
+	
 <!--  
 	<update id="updateReplyCnt">
 		update tbl_board set replycnt = replycnt + #{amount}

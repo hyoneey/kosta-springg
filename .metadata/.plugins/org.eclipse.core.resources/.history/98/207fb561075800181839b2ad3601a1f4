@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul id="replies">
+	
+	</ul>
+
+	<script id="template" type="text/x-handlebars-template">
+		{{#each .}}
+		<li class="replyLi">
+			<div>{{rno}}</div>
+			<div>{{replytext}}</div>
+			<div>{{replydate}}</div>
+		</li>
+		{{/each}}
+	</script>
+	
+	<script>
+		var source = $("#template").html();
+	</script>
+</body>
+</html>

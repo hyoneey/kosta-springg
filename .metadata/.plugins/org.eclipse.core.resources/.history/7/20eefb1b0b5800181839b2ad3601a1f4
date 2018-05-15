@@ -1,0 +1,128 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@include file="./include/header.jsp"%>
+
+<!-- Main content -->
+<div>
+	<section class="content">
+		
+		<!-- 댓글 등록하는 부분 -->
+		<div class="row">
+			<!-- left column -->
+			<div class="col-md-12">
+				<div class="box box-success">
+				
+					<div class="box-header">
+						<h3 class="box-title">ADD NEW REPLY</h3>
+					</div> <!-- /.box-header -->
+					
+					<div class="box-body">
+						<label for="newRplyWriter">Writer</label>
+						<input class="form-control" type="text" placeholder="USER ID" id="newReplyWriter">
+						<label for="newReplyText">ReplyText</label>
+						<input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText">
+					</div>
+					
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
+					</div>
+				</div>
+		
+				<!-- 댓글 목록과 페이징 처리에 필요한 부분 -->
+				<!-- TimeLine -->
+				<ul class="timeline">
+					<li class="time-label" id="repliesDiv">
+						<span class="bg-green"> Replies List </span>
+					</li>
+				</ul>
+				
+				<div class="text-center">
+					<ul id="pagination" class="pagination pagination-sm no-margin">
+					</ul>
+				</div>
+	
+				<script id="template" type="text/x-handlebars-template">
+					{{#each .}}
+					<li class="replyLi" data-rno = {{rno}}>
+						<i class="fa fa-comments bg-blue"></i>
+						<div class="timeline-item">
+
+							<span class="time">
+								<i class="fa fa-clock-o"></i>
+								 {{prettifyDate regdate}}
+							</span>
+							<h3 class="timeline-header"> 
+								<strong> {{rno}} </strong>
+							</h3>
+							<div class="timeline-body"> 
+								{{replytext}} 
+							</div>
+							<div class="timeline-footer">
+								<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">
+									Modify 
+								</a>
+							</div>
+
+						</div>
+					</li>
+					{{/each}}	
+				</script>
+				
+				<script>
+					Handlebars.registerHelper("prettifyDate" , function(timeValue){
+						var dateObj = new Date(timeValue);
+						var year = dateObj.getFullYear();
+						var month = dateObj.getMonth();
+						var date = dateObj.getDate();
+						
+						return year+"/"+month+"/"+date;
+					});
+					
+					var printData = function(replyArr, target, templateObject){
+						var template = Handlebars.compile(templateObject.html());
+						
+						var html = template(replyArr);
+						$(".replyLi").remove();
+						target.after(html);
+					}
+					
+					/* 페이징 처리 */
+					var bno = ${boardVO.bno};					
+					var replyPage = 1;
+					function getPage(pageInfo) {
+						$.getJSON(pageInfo, function(data) {
+							printData(data.list, $("#repliesDiv"), $('#template'));
+							printPaging(data.pageMaker, $(".pagination"));
+
+							$("#modifyModal").modal('hide');
+						});
+					}
+
+					var printPaging = function(pageMaker, target) {
+						var str = "";
+
+						if (pageMaker.prev) {
+							str += "<li><a href='" + (pageMaker.startPage - 1)
+									+ "'> << </a></li>";
+						}
+
+						for (var i = pageMaker.startPage, len = pageMaker.endPage; i <= len; i++) {
+							var strClass = pageMaker.cri.page == i ? 'class=active' : '';
+							str += "<li "+strClass+"><a href='"+i+"'>" + i + "</a></li>";
+						}
+
+						if (pageMaker.next) {
+							str += "<li><a href='" + (pageMaker.endPage + 1)
+									+ "'> >> </a></li>";
+						}
+
+						target.html(str);
+					};
+				</script>
+	
+			</div> <!--/.col (left) -->
+		</div> <!-- /.row -->
+	</section> <!-- /.content -->
+
+<%@include file="./include/footer.jsp"%>

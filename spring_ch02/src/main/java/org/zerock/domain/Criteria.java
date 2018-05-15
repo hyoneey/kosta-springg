@@ -2,12 +2,12 @@ package org.zerock.domain;
 
 public class Criteria { //페이징 처리를 위한 클래스
 
-	private int page;
-	private int perPageNum;
+	private int page; //페이지
+	private int perPageNum; //페이지당 가지고 있는 글 갯수
 	
 	public Criteria(){
 		this.page = 1;
-		this.perPageNum = 5;
+		this.perPageNum = 10;
 	}
 
 	public int getPage() {
@@ -31,7 +31,7 @@ public class Criteria { //페이징 처리를 위한 클래스
 	public void setPerPageNum(int perPageNum) {
 		
 		if(perPageNum <= 0 || perPageNum > 100){
-			this.perPageNum = 5;
+			this.perPageNum = 10;
 			return;
 		}
 		this.perPageNum = perPageNum;

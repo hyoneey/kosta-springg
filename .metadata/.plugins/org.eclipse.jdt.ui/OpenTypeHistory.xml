@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=spring_ch02/src\/main\/java&lt;org.zerock.persistence{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1525938223340"/>
-<typeInfo handle="=spring_ch02/src\/main\/java&lt;org.zerock.service{BoardService.java[BoardService" modifiers="513" timestamp="1525939442911"/>
+<typeInfo handle="=spring_ch02/src\/main\/java&lt;org.zerock.persistence{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1526264877308"/>
+<typeInfo handle="=spring_ch02/src\/main\/java&lt;org.zerock.service{BoardService.java[BoardService" modifiers="513" timestamp="1526262688046"/>
+<typeInfo handle="=ex002/src\/main\/java&lt;org.zerock.persistence{ReplyDAO.java[ReplyDAO" modifiers="513" timestamp="1526280504661"/>
+<typeInfo handle="=ex002/src\/main\/java&lt;org.zerock.service{ReplyService.java[ReplyService" modifiers="513" timestamp="1526280890325"/>
 </typeInfoHistroy>
