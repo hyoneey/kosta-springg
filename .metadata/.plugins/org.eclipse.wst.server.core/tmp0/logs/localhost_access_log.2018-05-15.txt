@@ -439,3 +439,16 @@
 0:0:0:0:0:0:0:1 - - [15/May/2018:16:55:32 +0900] "GET /sboard/.resources/dist/img/user3-128x128.jpg HTTP/1.1" 404 992
 0:0:0:0:0:0:0:1 - - [15/May/2018:16:55:32 +0900] "GET /sboard/resources/dist/img/user2-160x160.jpg HTTP/1.1" 404 992
 0:0:0:0:0:0:0:1 - - [15/May/2018:16:55:32 +0900] "GET /sboard/resources/dist/img/user2-160x160.jpg HTTP/1.1" 404 992
+127.0.0.1 - - [15/May/2018:16:59:20 +0900] "GET / HTTP/1.1" 200 164
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:20 +0900] "GET / HTTP/1.1" 200 164
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:23 +0900] "GET /sboard/.resources/dist/img/user3-128x128.jpg HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:23 +0900] "GET /sboard/list HTTP/1.1" 200 37260
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:23 +0900] "GET /sboard/resources/dist/img/user2-160x160.jpg HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:23 +0900] "GET /sboard/resources/dist/img/user2-160x160.jpg HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:26 +0900] "GET /sboard/readPage?page=1&perPageNum=10&searchType&keyword=&bno=195 HTTP/1.1" 200 39481
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:26 +0900] "GET /sboard/.resources/dist/img/user3-128x128.jpg HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:26 +0900] "GET /sboard/resources/dist/img/user2-160x160.jpg HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:26 +0900] "GET /sboard/resources/dist/img/user2-160x160.jpg HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:28 +0900] "GET /replies/195/1 HTTP/1.1" 200 924
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:32 +0900] "POST /replies/ HTTP/1.1" 200 7
+0:0:0:0:0:0:0:1 - - [15/May/2018:16:59:33 +0900] "GET /replies/195/1 HTTP/1.1" 200 1028
