@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.FileVO;
 import org.zerock.domain.SearchCriteria;
 
 public interface BoardDAO {
@@ -27,5 +28,20 @@ public interface BoardDAO {
 	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception; //필터 검색
 	
 	public int listSearchCount(SearchCriteria cri) throws Exception; //검색 페이징처리
+	
+	public void updateReplyCnt(Integer bno, int amount) throws Exception; // 댓글의 숫자를 변경
+	
+	public void updateViewCnt(Integer bno) throws Exception; //조회수처리
+	
+	public void addAttach(FileVO fileVO) throws Exception; // 첨부파일
+	
+	public List<String> getAttach(Integer bno) throws Exception; //특정게시물의 첨부파일을 시간순서대로 가져오는 함수
 
+	public void deleteAttach(Integer bno) throws Exception; // 특정 게시물 번호에 속하는 모든 첨부파일 삭제
+	
+	public void replaceAttach(String fullName, Integer bno) throws Exception; //첨부파일 수정
+
+	public int getBno() throws Exception; //submit
+	
+	public int getBno(Integer rno) throws Exception;
 }

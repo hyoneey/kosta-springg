@@ -1,0 +1,52 @@
+package org.zerock.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyVO;
+import org.zerock.persistence.BoardreplyDAO;
+import org.zerock.persistence.ReplyreplyDAO;
+
+@Service
+public class ReplyServiceImpl implements ReplyService {
+	
+	@Inject
+	private BoardreplyDAO boardreplyDAO;
+	
+	@Inject
+	private ReplyreplyDAO replyDAO;
+
+	@Override
+	public void addReply(ReplyVO vo) throws Exception {
+		replyDAO.create(vo);
+	}
+
+	@Override
+	public List<ReplyVO> listReply(Integer bno) throws Exception {
+		return replyDAO.list(bno);
+	}
+
+	@Override
+	public void modifyReply(ReplyVO vo) throws Exception {
+		replyDAO.update(vo);
+
+	}
+
+	@Override
+	public void removeReply(Integer rno) throws Exception {
+		replyDAO.delete(rno);
+	}
+
+	@Override
+	public List<ReplyVO> listReplyPage(Integer bno, Criteria cri) throws Exception{
+		return replyDAO.listPage(bno, cri);
+	}
+	
+	@Override
+	public int count(Integer bno) throws Exception{
+		return replyDAO.count(bno);
+	}
+}

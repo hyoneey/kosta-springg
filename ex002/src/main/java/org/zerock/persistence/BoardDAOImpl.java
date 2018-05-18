@@ -1,6 +1,8 @@
 package org.zerock.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.FileVO;
 import org.zerock.domain.SearchCriteria;
 
 @Repository
@@ -79,5 +82,54 @@ public class BoardDAOImpl implements BoardDAO {
 	public int listSearchCount(SearchCriteria cri) throws Exception{
 		return session.selectOne(namespace+".listSearchCount", cri);
 	}
+	
+	@Override
+	public void updateReplyCnt(Integer bno, int amount) throws Exception{
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("bno", bno);
+		paramMap.put("amount", amount);
+		
+		session.update(namespace+".updateReplyCnt", paramMap);
+	}
+	
+	@Override
+	public void updateViewCnt(Integer bno) throws Exception{
+		session.update(namespace+".updateViewCnt", bno);
+	}
+	
+	@Override
+	public void addAttach(FileVO fileVO) throws Exception{
+		session.insert(namespace+".addAttach", fileVO);
+	}
+	
+	@Override
+	public List<String> getAttach(Integer bno) throws Exception{
+		return session.selectList(namespace+".getAttach", bno);
+	}
 
+	
+	public void deleteAttach(Integer bno) throws Exception{
+		session.delete(namespace+".deleteAttach" , bno);
+	}
+	
+	public void replaceAttach(String fullName, Integer bno) throws Exception{
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("bno", bno);
+		paramMap.put("fullName", fullName);
+		
+		session.insert(namespace+".replaceAttach", paramMap);
+	}
+	@Override
+	public int getBno() throws Exception {
+		return session.selectOne(namespace+".maxNum");
+	}
+
+	@Override
+	public int getBno(Integer rno) throws Exception {	
+		return session.selectOne(namespace+".getBno", rno);
+	}
 }

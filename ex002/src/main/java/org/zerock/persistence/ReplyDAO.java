@@ -18,4 +18,6 @@ public interface ReplyDAO {
 	public List<ReplyVO> listPage(Integer bno, Criteria cri) throws Exception; //댓글 페이징 처리- bno을 통해 특정게시물의 댓글 목록조회
 	
 	public int count(Integer bno) throws Exception; //해당 게시물의 댓글 수
+	
+	public int getBno(Integer rno) throws Exception; // 댓글이 삭제될 때 해당 게시물의 번호를 알아내는 함수
 }
